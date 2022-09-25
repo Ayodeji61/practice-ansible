@@ -13,3 +13,8 @@
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp
     remote_src: yes
+
+- name: Copy Configuration File
+  ansible.builtin.copy:
+    src: frontend-main/localhost.conf
+    dest: /etc/nginx/default.d/roboshop.conf
