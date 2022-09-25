@@ -1,13 +1,14 @@
+
 - name: Add RoboShop Application User
   ansible.builtin.user:
     name: roboshop
 
-- name: Remove Old Content
+- name: Clean up Old App Content
   ansible.builtin.file:
-    path: /home/roboshop
+    path: /home/roboshop/{{COMPONENT}}
     state: absent
 
-- name: Download and Extract Content
+- name: Downloading Applicatioin Content
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip
     dest: /tmp
