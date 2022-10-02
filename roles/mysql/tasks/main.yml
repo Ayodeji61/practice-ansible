@@ -15,3 +15,11 @@
     - mysql-community-server
     - gcc
     - python36-devel
+
+- name: Start Mysl Servcie
+  ansible.builtin.systemd:
+    name: mysql
+    enabled: yes
+    state: started
+    
+
