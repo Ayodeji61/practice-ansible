@@ -1,0 +1,32 @@
+- name: Setup Redis Repo
+  ansible.builtin.dnf:
+    name: 'https://rpms.remirepo.net/enterprise/remi-release-8.rpm'
+    state: installed
+    disable_gpg_check: yes
+
+
+- name: Setup Redis Repo
+  ansible.builtin.shell: dnf module enable redis:remi-6.2
+
+
+- name: Install Redis
+  ansible.builtin.yum:
+    name: redis
+    state: installed
+
+
+
+- name: Update 127.0.0.1 to 0.0.0.0
+  ansible.builtin.replace:
+    path: "{{item}}"
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+  loop:
+    - /etc/redis.conf
+    - /etc/redis/redis.conf
+
+- name: Start Reds Service
+  ansible.builtin.systemd:
+    name: redis
+    state: restarted
+    enabled: yes
