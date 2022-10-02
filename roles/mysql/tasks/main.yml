@@ -18,8 +18,8 @@
 
 - name: Start Mysl Servcie
   ansible.builtin.systemd:
-    name: mysql
+    name: mysqld
     enabled: yes
     state: started
-    
+
 
