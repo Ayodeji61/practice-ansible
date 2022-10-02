@@ -1,4 +1,4 @@
-- name: Run frontend script
+- name: Run roboshop script
   hosts: all
   become: yes
   roles:
