@@ -1,0 +1,10 @@
+- name: Install Pyhton
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python36-devel
+    state: installed
+
+- name: Import App Pre-Req Task file
+  ansible.builtin.import_tasks: app-prereq.yml
